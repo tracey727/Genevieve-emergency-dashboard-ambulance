@@ -1,0 +1,21 @@
+{
+  "name": "genevieve-emergency-health-ambulance-patient-transport-command-production-module-v2-7",
+  "version": "2.7.0",
+  "private": true,
+  "type": "module",
+  "description": "GENEVIEVE Emergency Health, Ambulance & Patient Transport command centre and production-ready sector module built on the GENEVIEVE HEALTH foundation",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check server.mjs && node --check api/index.mjs && node --check src/*.mjs && node --check src/store/*.mjs && node --check public/app.js && node --check public/sw.js && npm test",
+    "migrate": "node scripts/migrate.mjs",
+    "readiness": "node scripts/readiness.mjs"
+  },
+  "dependencies": {
+    "pg": "8.13.3"
+  }
+}

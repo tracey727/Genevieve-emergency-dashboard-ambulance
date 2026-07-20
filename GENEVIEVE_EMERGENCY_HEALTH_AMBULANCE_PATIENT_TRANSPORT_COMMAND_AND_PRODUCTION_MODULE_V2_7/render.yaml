@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: genevieve-emergency-transport-v2-7
+    runtime: docker
+    healthCheckPath: /api/health
+    envVars:
+      - key: DEPLOYMENT_MODE
+        value: demo
+      - key: PORT
+        value: 8080
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true

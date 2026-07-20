@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: genevieve_health
+      POSTGRES_USER: genevieve
+      POSTGRES_PASSWORD: change-before-use
+    volumes:
+      - genevieve_health_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U genevieve -d genevieve_health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://genevieve:change-before-use@db:5432/genevieve_health
+    ports: ["8080:8080"]
+    depends_on:
+      db: {condition: service_healthy}
+volumes:
+  genevieve_health_db:

@@ -1,0 +1,65 @@
+{
+  "product": "GENEVIEVE Emergency Health, Ambulance & Patient Transport™ Command and Production Module V2.7",
+  "version": "2.7.0",
+  "verified_at_utc": "2026-07-19T13:37:33.160872+00:00",
+  "status": "CONTROLLED DEMONSTRATION AND PRODUCTION FOUNDATION — FICTIONAL OR CODED DATA ONLY",
+  "automated_tests": {
+    "passed": 31,
+    "failed": 0,
+    "command": "npm run check"
+  },
+  "syntax": {
+    "node_source": "PASS",
+    "browser_javascript": "PASS",
+    "service_worker": "PASS"
+  },
+  "http_smoke": {
+    "status": "PASS",
+    "dashboard": 200,
+    "health_api": 200,
+    "readiness_api": 200,
+    "configuration_api": 200,
+    "people_api": 200,
+    "queue_api": 200,
+    "emergency_api": 200
+  },
+  "safety_controls": {
+    "locked_accountability_ladder": "PASS",
+    "named_primary_and_backup_owners": "PASS",
+    "timed_escalation": "PASS",
+    "append_only_case_history": "PASS",
+    "premature_closure_blocked": "PASS",
+    "human_led_dispatch_boundary": "PASS",
+    "unsafe_scene_direction_blocked": "PASS",
+    "current_protocol_reference_control": "PASS",
+    "destination_human_decision_boundary": "PASS",
+    "hospital_handover_acceptance": "PASS",
+    "interfacility_acceptance": "PASS",
+    "rsq_and_aeromedical_human_control": "PASS",
+    "nept_closed_loop_transport": "PASS",
+    "vehicle_no_automatic_certification": "PASS",
+    "dog_pet_dependant_responsibilities": "PASS",
+    "queensland_emergency_layer_separate": "PASS",
+    "genevieve_listens_separate": "PASS"
+  },
+  "data_and_deployment": {
+    "tenant_rls_schema": "PASS",
+    "production_fails_closed": "PASS",
+    "demo_data": "FICTIONAL ONLY",
+    "fresh_extraction_retest": "PASS — all 31 tests passed after clean ZIP extraction"
+  },
+  "locked_logo_sha256": {
+    "public/assets/genevieve-ga-logo-approved-original.png": "3efce4211e5dd47d8608fe3e617deff0c751898cfe588780d1100d22c226645f",
+    "public/assets/genevieve-tree-logo-approved-original.jpeg": "c8297d53bae2f26a4a6ed4b0d8626170ce57096679c54cfe8c13f00739ac3256"
+  },
+  "visual_test": {
+    "chromium_screenshot": "NOT COMPLETED",
+    "reason": "Headless Chromium did not finish inside the restricted container; phone, desktop and accessibility visual testing remains a deployment-stage requirement."
+  },
+  "legal_boundary": "This verification confirms package behaviour and internal tests only. It is not QAS authority, clinical accreditation, regulatory approval, legal advice, aviation approval, transport certification or permission to use real data.",
+  "package_contents": {
+    "internal_files": 65,
+    "zip_integrity": "PASS",
+    "internal_sha256_manifest": "PASS"
+  }
+}
