@@ -1,0 +1,12 @@
+{
+  "queenslandFacilityCodes": "external-authority mapping required",
+  "australianWarningSystem": "external-authority mapping required",
+  "genevieveAccountabilityStages": [
+    "GREEN",
+    "AMBER",
+    "RED",
+    "CRITICAL",
+    "GOVERNANCE"
+  ],
+  "rule": "Facility/public-warning authority remains external to GENEVIEVE."
+}
