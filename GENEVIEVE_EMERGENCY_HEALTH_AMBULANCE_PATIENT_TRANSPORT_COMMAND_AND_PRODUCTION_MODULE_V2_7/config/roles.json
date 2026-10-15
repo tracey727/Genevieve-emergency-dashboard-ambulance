@@ -1,0 +1,24 @@
+{
+  "roles": [
+    "patient",
+    "supporter",
+    "emergency_medical_dispatcher",
+    "dispatch_supervisor",
+    "paramedic",
+    "critical_care_paramedic",
+    "patient_transport_officer",
+    "retrieval_coordinator",
+    "retrieval_clinician",
+    "sending_clinician",
+    "receiving_clinician",
+    "ed_handover",
+    "fleet_equipment",
+    "service_manager",
+    "incident_controller",
+    "governance",
+    "auditor",
+    "system_admin"
+  ],
+  "source": "src/rbac.mjs",
+  "authority": "role configuration alone does not grant clinical or statutory authority"
+}

@@ -30,3 +30,9 @@ A separate emergency-response, transfer and patient-transport sector foundation 
 - GENEVIEVE LISTENS™ remains separate in code, data, repository, storage namespace and deployment.
 
 See `START_HERE.md`, `docs/EMERGENCY_TRANSPORT_COMPLIANCE_MAP_2026.md`, and `docs/EMERGENCY_TRANSPORT_HANDOVER_AND_TEST_PLAN.md`.
+
+## Active deployment path — reconciled 15 October 2026
+
+The active platform target is **GitHub + Cloudflare Workers + Neon Postgres**. Use `wrangler.jsonc` and `worker/index.mjs`. Historical Render/Vercel/Docker files are provenance only and are not an authorised release path.
+
+The July SHA256 manifest is retained as historical evidence of the original ZIP contents. Files absent from the GitHub upload were reconstructed from the surviving code contracts and manifest; see `docs/RECONCILIATION_2026-10-15.md`.

@@ -1,0 +1,21 @@
+name: Required CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GENEVIEVE_EMERGENCY_HEALTH_AMBULANCE_PATIENT_TRANSPORT_COMMAND_AND_PRODUCTION_MODULE_V2_7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: GENEVIEVE_EMERGENCY_HEALTH_AMBULANCE_PATIENT_TRANSPORT_COMMAND_AND_PRODUCTION_MODULE_V2_7/package.json
+      - run: npm install --no-audit --no-fund
+      - run: npm run check
+      - run: npm run cf:dry-run

@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "genevieve-ambulance-v2-7",
+  "main": "worker/index.mjs",
+  "compatibility_date": "2026-10-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {"directory":"./public","binding":"ASSETS","not_found_handling":"single-page-application"},
+  "triggers": {"crons":["* * * * *"]},
+  "vars": {
+    "DEPLOYMENT_MODE":"demo",
+    "PUBLIC_BASE_URL":"https://genevieve-ambulance-v2-7.workers.dev",
+    "DATABASE_SSL":"true",
+    "ESCALATION_WORKER_ENABLED":"true"
+  }
+}
