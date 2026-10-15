@@ -1,0 +1,11 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {MemoryStore} from "../src/store/memory.mjs";
+const gov={id:"demo-governance",tenantId:"tenant-demo-health",role:"governance",permissions:["accept_assignment","record_action","escalate_case"]};
+test("memory store seeds cases",async()=>assert.ok((await new MemoryStore().listCases(gov)).length>=2));
+test("tenant isolation returns no foreign case",async()=>{const s=new MemoryStore();const [c]=await s.listCases(gov);assert.equal(await s.getCase({...gov,tenantId:"other"},c.id),null);});
+test("acceptance is recorded",async()=>{const s=new MemoryStore();const [c]=await s.listCases(gov);const r=await s.accept(gov,c.id);assert.equal(r.status,"ACCEPTED");});
+test("action requires summary",async()=>{const s=new MemoryStore();const [c]=await s.listCases(gov);await assert.rejects(()=>s.recordAction(gov,c.id,{}));});
+test("manual escalation increments count",async()=>{const s=new MemoryStore();const [c]=await s.listCases(gov);const r=await s.escalate(gov,c.id,{reason:"test"});assert.equal(r.escalation_count,1);});
+test("premature closure is blocked",async()=>{const s=new MemoryStore();const [c]=await s.listCases(gov);await assert.rejects(()=>s.close(gov,c.id,{}));});
+test("history is append only in memory adapter",async()=>{const s=new MemoryStore();const [c]=await s.listCases(gov);const before=(await s.history(gov,c.id)).length;await s.accept(gov,c.id);assert.equal((await s.history(gov,c.id)).length,before+1);});
