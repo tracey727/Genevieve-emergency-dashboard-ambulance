@@ -1,12 +1,10 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import { sectorsData } from "../config/sectors.mjs";
 import {actorFromRequest} from './auth.mjs';
 import {requirePermission} from './rbac.mjs';
 import {getStore} from './store/index.mjs';
 import {json,bodyJson,errorResponse,securityHeaders} from './http.mjs';
 import {emergencyTransportConfig,emergencyTransportDashboard,emergencyTransportPeople,emergencyTransportPerson,emergencyTransportQueue,emergencyTransportSafetyEvents,emergencyTransportEmergencies} from './emergency-transport.mjs';
-const root=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');let sectorsCache;
-async function sectors(){sectorsCache ||= JSON.parse(await fs.readFile(path.join(root,'config/sectors.json'),'utf8'));return sectorsCache;}
+async function sectors(){ return structuredClone(sectorsData); }
 export async function handleApi(request,config){try{
  const url=new URL(request.url),p=url.pathname;
  if(p==='/api/health')return securityHeaders(json({ok:true,product:'GENEVIEVE Emergency Health, Ambulance & Patient Transport™ Command and Production Module V2.7',mode:config.mode,time:new Date().toISOString()}));
