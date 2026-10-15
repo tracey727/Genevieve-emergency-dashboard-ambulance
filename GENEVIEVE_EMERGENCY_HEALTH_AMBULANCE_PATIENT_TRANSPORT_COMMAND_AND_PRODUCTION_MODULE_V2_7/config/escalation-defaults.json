@@ -1,0 +1,9 @@
+{
+  "GREEN": 240,
+  "AMBER": 60,
+  "RED": 15,
+  "CRITICAL": 5,
+  "GOVERNANCE": null,
+  "unit": "minutes",
+  "rule": "Operational accountability defaults only; they do not alter clinical triage priority."
+}
