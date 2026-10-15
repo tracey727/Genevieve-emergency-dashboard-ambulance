@@ -16,14 +16,14 @@ export function getConfig(env = process.env) {
     accessibilityTested: trueValue(env.ACCESSIBILITY_TESTED),
   };
   const missing = [];
-  if (production && !env.DATABASE_URL) missing.push('DATABASE_URL');
+  if (production && !env.DATABASE_URL && !env.HYPERDRIVE?.connectionString) missing.push('DATABASE_URL or HYPERDRIVE');
   if (production && (!env.JWT_SECRET || env.JWT_SECRET.length < 32)) missing.push('JWT_SECRET (minimum 32 characters)');
   if (production && !env.PUBLIC_BASE_URL?.startsWith('https://')) missing.push('PUBLIC_BASE_URL using HTTPS');
   if (production && (!env.CRON_SECRET || env.CRON_SECRET.length < 16)) missing.push('CRON_SECRET (minimum 16 characters)');
   for (const [key, value] of Object.entries(gates)) if (production && !value) missing.push(key);
   return {
     mode, production, port: Number(env.PORT || 8080),
-    databaseUrl: env.DATABASE_URL || '', databaseSsl: env.DATABASE_SSL !== 'false',
+    databaseUrl: env.DATABASE_URL || env.HYPERDRIVE?.connectionString || '', databaseSsl: env.DATABASE_SSL !== 'false',
     jwtSecret: env.JWT_SECRET || '', jwtIssuer: env.JWT_ISSUER || 'genevieve-health',
     jwtAudience: env.JWT_AUDIENCE || 'genevieve-health-users',
     trustedProxyAuth: trueValue(env.TRUSTED_PROXY_AUTH),

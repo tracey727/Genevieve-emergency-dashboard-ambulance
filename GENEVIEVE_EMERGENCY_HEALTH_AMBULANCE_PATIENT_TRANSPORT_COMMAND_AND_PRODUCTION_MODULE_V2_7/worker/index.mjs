@@ -3,7 +3,13 @@ import {handleApi} from "../src/router.mjs";
 import {getStore} from "../src/store/index.mjs";
 
 function withRuntimeEnv(env){
-  return {...env, DEPLOYMENT_MODE:env.DEPLOYMENT_MODE||"demo", PUBLIC_BASE_URL:env.PUBLIC_BASE_URL||"https://genevieve-ambulance-v2-7.workers.dev"};
+  const databaseUrl = env.DATABASE_URL || env.HYPERDRIVE?.connectionString || "";
+  return {
+    ...env,
+    DATABASE_URL: databaseUrl,
+    DEPLOYMENT_MODE: env.DEPLOYMENT_MODE || "demo",
+    PUBLIC_BASE_URL: env.PUBLIC_BASE_URL || "https://genevieve-ambulance-v2-7.workers.dev"
+  };
 }
 
 export default {
