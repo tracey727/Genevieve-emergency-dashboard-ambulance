@@ -1,0 +1,27 @@
+[
+  {
+    "id": "emergency-transport",
+    "name": "Emergency Health, Ambulance & Patient Transport",
+    "status": "CONTROLLED_FOUNDATION"
+  },
+  {
+    "id": "road-ambulance",
+    "name": "Road Ambulance",
+    "status": "CONFIGURATION_REQUIRED"
+  },
+  {
+    "id": "interfacility",
+    "name": "Interfacility Transfer",
+    "status": "CONFIGURATION_REQUIRED"
+  },
+  {
+    "id": "aeromedical",
+    "name": "Retrieval & Aeromedical",
+    "status": "CONFIGURATION_REQUIRED"
+  },
+  {
+    "id": "nept",
+    "name": "Non-emergency Patient Transport",
+    "status": "CONFIGURATION_REQUIRED"
+  }
+]
